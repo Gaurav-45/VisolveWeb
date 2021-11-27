@@ -4,7 +4,7 @@ import React from 'react'
 const Solve = (props) => {
     return (
         <div>
-            {console.log(props.state)}
+            <p>{props.location.state}</p>
         </div>
     )
 }

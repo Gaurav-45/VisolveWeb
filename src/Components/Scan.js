@@ -2,6 +2,7 @@ import React from 'react'
 import Tesseract from 'tesseract.js';
 import { Link, useHistory } from "react-router-dom";
 import '../App.css'
+import Buttons from './Buttons';
 
 const Scan = () => {
 
@@ -72,24 +73,7 @@ const Scan = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
               ></textarea>
-              <div className="flex flex-row justify-end mx-auto">
-
-              <Link to={{pathname:"/solve",state:text}}>
-                  <input
-                    type="button"
-                    className="btn btn-success mt-5 me-5 ms-3"
-                    value="Solve"
-                    // onClick={()=>history.push({pathname:"/solve",state:text})}
-                  />
-                </Link>
-                <input
-                  type="button"
-                  className="btn btn-primary mt-5"
-                  value="Visualize"
-                  onClick={()=>history.push({pathname:"/visualize",state:text})}
-                />
-              </div>
-              
+              <Buttons equation={text}/>    
             </>
           )}
         </div>
