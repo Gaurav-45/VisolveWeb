@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import {useLocation} from 'react-router-dom'   
 import "../index.css" 
 import axios from 'axios'
+import { Link, useNavigate} from 'react-router-dom'
 
 
 const Solve = (props) => {
-
+    const navigate = useNavigate();
     const location = useLocation();
     
     var reqEquation=location.state.equation
     var len=reqEquation.length
     var eq=""
-    var ans=0
     
     console.log(reqEquation);
     console.log(len);
@@ -32,11 +32,16 @@ const Solve = (props) => {
             len=len+10
         }
     }
+    
+    const visEq=()=>{
+        navigate('/vis',{state:location.state});
+      }
+  
     const [solution, setSolution] = useState();
     const [waiting, setWaiting] = useState(0);
     const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=77QY3U-QR78VRQUR7";
     console.log(url);
-    setTimeout(()=>setWaiting(1),5000)
+    setTimeout(()=>setWaiting(1),2000)
     useEffect(() => {
         axios.get("https://cors-anywhere.herokuapp.com/"+url)
             .then(response => setSolution(response));
@@ -45,19 +50,23 @@ const Solve = (props) => {
     return (
         (waiting)?(
         <div className="solution home">
-            <h1>{waiting}</h1>
             {console.log(solution)}
             <div className="box">
                 <h1>Solution: </h1>
                 <h6>Entered equation: {reqEquation}</h6>
                 <br />
-                {/* x=1/2 */}
                 {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
                 <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p>
-                {/* queryresult.pods[4].subpods[0].img */}
+                <div onClick={()=>{visEq()}}>
+                <input
+                  type="button"
+                  className="btn btn-primary mt-4 ms-1"
+                  value="Visualize"
+                />
+                </div>
             </div>
         </div>
-    ):(<>{waiting}</>)
+    ):(<><h1>Waiting for Api response</h1></>)
     )
 }
 

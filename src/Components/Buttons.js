@@ -8,6 +8,10 @@ const Buttons = (props) => {
       navigate('/solve',{state:props});
     }
 
+    const visEq=()=>{
+      navigate('/vis',{state:props});
+    }
+
     return (
         <div className="flex flex-row justify-end mx-auto">
                 {/* {console.log(props)} */}
@@ -18,7 +22,7 @@ const Buttons = (props) => {
                     value="Solve"
                   />
                 </div>
-                <div>
+                <div onClick={()=>{visEq()}}>
                 <input
                   type="button"
                   className="btn btn-primary mt-4 ms-1"
