@@ -52,7 +52,10 @@ const Solve = (props) => {
               <img className="graph" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
             </div>
           </div>
-    ):(<><h1>Waiting for Api response</h1></>)
+    ):(<>
+    <h1 className="waiting-text">Waiting for Api response</h1>
+    <div className="loader"></div>
+    </>)
     )
 }
 
