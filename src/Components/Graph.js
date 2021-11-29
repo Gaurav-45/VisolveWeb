@@ -1,28 +1,15 @@
 import React from 'react'
-import functionPlot from "function-plot";
-
-let contentsBounds = document.body.getBoundingClientRect();
-let width = 800;
-let height = 500;
-let ratio = contentsBounds.width / width;
-width *= ratio;
-height *= ratio;
-
 
 const Graph = () => {
     
-    functionPlot({
-        target: '#closed',
-        xAxis: {domain: [-2, 12]},
-        data: [{
-          fn: '3 + sin(x)',
-          range: [2, 8],
-          closed: true
-        }]
-      })
     return (
-        <div>
-            {functionPlot}
+        <div className="graph">
+          <div className="boxG">
+            <h1>Graph: </h1>
+            <h6>Entered equation: </h6>
+            <br />
+            <img className="graph" src="https://www3.wolframalpha.com/Calculate/MSP/MSP424225c4chgff6192090000369i36be3f1h1dg2?MSPStoreType=image/gif&s=48" alt="" />
+          </div>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {useLocation} from 'react-router-dom'   
 import "../index.css" 
+import axios from 'axios'
+
 
 const Solve = (props) => {
 
@@ -32,20 +34,19 @@ const Solve = (props) => {
 
     const [solution, setsolution] = useState();
 
-    useEffect(()=>{
-    const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=77QY3U-QR78VRQUR7";
-        console.log(eq);
-        console.log(url);
-        fetch(url)
-        .then(resp=>setsolution(resp))
-        .catch(err => {
-            throw new Error(err)
-        })
-    },[])
+    const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=X4K4V2-32TKX6XJ7G";
+    console.log(url);
+    useEffect(() => {
+        axios.get("https://cors-anywhere.herokuapp.com/"+url)
+            .then(response => setsolution(response));
+        
+    }, []);
 
     return (
+        
         <div className="solution">
-            {console.log(solution)}
+            {/* {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)} */}
+            <img src={solution.data.queryresult.pods[1].subpods[0].img.src}/>
             <div>{eq}</div>
         </div>
     )
