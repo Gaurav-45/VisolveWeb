@@ -11,7 +11,8 @@ const Solve = (props) => {
     var reqEquation=location.state.equation
     var len=reqEquation.length
     var eq=""
-
+    var ans=0
+    
     console.log(reqEquation);
     console.log(len);
 
@@ -32,22 +33,28 @@ const Solve = (props) => {
         }
     }
 
-    const [solution, setsolution] = useState();
-
-    const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=X4K4V2-32TKX6XJ7G";
+    const [solution, setSolution] = useState();
+    const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=77QY3U-QR78VRQUR7";
     console.log(url);
     useEffect(() => {
         axios.get("https://cors-anywhere.herokuapp.com/"+url)
-            .then(response => setsolution(response));
+            .then(response => setSolution(response));
         
     }, []);
 
     return (
-        
-        <div className="solution">
-            {/* {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)} */}
-            <img src={solution.data.queryresult.pods[1].subpods[0].img.src}/>
-            <div>{eq}</div>
+        <div className="solution home">
+            {console.log(solution)}
+            <div className="box">
+                <h1>Solution: </h1>
+                <h6>Entered equation: {reqEquation}</h6>
+                <br />
+                {/* x=1/2 */}
+                {setTimeout(()=>{console.log("waiting");},5000)}
+                {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
+                {/* <p>{ans}</p> */}
+                {/* queryresult.pods[4].subpods[0].img */}
+            </div>
         </div>
     )
 }
