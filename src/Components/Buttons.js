@@ -1,26 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 
 const Buttons = (props) => {
+    const navigate = useNavigate();
+
+    const solveEq=()=>{
+      navigate('/solve',{state:props});
+    }
+
     return (
         <div className="flex flex-row justify-end mx-auto">
-                {console.log(props)}
-                <Link to={{pathname:"/solve",state:props}}>
-                  <input
+                {/* {console.log(props)} */}
+                <div onClick={()=>{solveEq()}}>
+                  <input 
                     type="button"
-                    className="btn btn-success mt-5 me-5 ms-3"
+                    className="btn btn-success mt-5 ms-3"
                     value="Solve"
-                    // onClick={()=>history.push({pathname:"/solve",state:text})}
                   />
-                </Link>
-                <Link to={{pathname:"/vis",state:props}}>
+                </div>
+                <div>
                 <input
                   type="button"
-                  className="btn btn-primary mt-5"
+                  className="btn btn-primary mt-4 ms-1"
                   value="Visualize"
-                  onClick={()=>history.push({pathname:"/visualize",state:text})}
                 />
-                </Link>
+                </div>
         </div>
     )
 }
