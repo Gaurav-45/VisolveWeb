@@ -36,7 +36,7 @@ const Solve = (props) => {
     const [waiting, setWaiting] = useState(0);
     const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=77QY3U-QR78VRQUR7";
     console.log(url);
-    setTimeout(()=>setWaiting(1),2000)
+    setTimeout(()=>setWaiting(1),5000)
     useEffect(() => {
         axios.get("https://cors-anywhere.herokuapp.com/"+url)
             .then(response => setSolution(response));

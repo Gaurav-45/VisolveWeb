@@ -12,6 +12,7 @@ const Solve = (props) => {
     var reqEquation=location.state.equation
     var len=reqEquation.length
     var eq=""
+    // const arr= [];
     
     console.log(reqEquation);
     console.log(len);
@@ -41,10 +42,10 @@ const Solve = (props) => {
     const [waiting, setWaiting] = useState(0);
     const url="https://api.wolframalpha.com/v2/query?input="+eq+"&output=json&appid=77QY3U-QR78VRQUR7";
     console.log(url);
-    setTimeout(()=>setWaiting(1),2000)
+    setTimeout(()=>setWaiting(1),5000)
     useEffect(() => {
         axios.get("https://cors-anywhere.herokuapp.com/"+url)
-            .then(response => setSolution(response));
+            .then(response => setSolution(response))
     }, []);
 
     return (
@@ -57,6 +58,11 @@ const Solve = (props) => {
                 <br />
                 {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
                 <h6>Answer : </h6>
+                {/* {arr.push(solution.data.queryresult.pods[4].subpods)}
+                {console.log(arr)}
+                {arr.map(sol => (
+                    <p>{sol.img.alt}</p>
+                ))} */}
                 <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p>
                 <div onClick={()=>{visEq()}}>
                 <input
