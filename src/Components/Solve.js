@@ -14,6 +14,7 @@ const Solve = (props) => {
     var len=reqEquation.length
     var eq=""
     const arr= [];
+    let ans=[];
     
     console.log(reqEquation);
     console.log(len);
@@ -64,17 +65,18 @@ const Solve = (props) => {
                     <h1>Solution: </h1>
                     <h6>Entered equation: {reqEquation}</h6>
                     <br />
-                    {/* {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)} */}
+                    {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
                     {console.log(arr)}
                     <h6>Answer : </h6>
                     {/* <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p> */}
                     {arr.forEach(s=>{
                         s.forEach(final=>{
-                            {console.log(final.img.alt)}
-                            <p>Helo</p>
+                            {console.log("printing this brooo"+final.img.alt)}
+                            {ans.push(final.img.alt + " ")}
                         })
                     })}
                     {/* <Answer arr={arr}/> */}
+                    <p>{ans}</p>
                     <div onClick={()=>{visEq()}}>
                         <input
                         type="button"
