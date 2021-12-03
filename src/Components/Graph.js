@@ -6,6 +6,10 @@ import axios from 'axios'
 
 const Solve = (props) => {
 
+    const refreshPage = ()=>{
+        window.location.reload();
+    }
+
     const location = useLocation();
   
     var reqEquation=location.state.equation
@@ -44,14 +48,18 @@ const Solve = (props) => {
 
     return (
         (waiting)?(
-          <div className="graph">
-            <div className="boxG">
-              <h1>Graph: </h1>
-              <h6>Entered equation: {reqEquation}</h6>
-              <br />
-              <img className="graph" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
+            <div>
+            {(typeof(solution)=="undefined")?(refreshPage()):(
+            <div className="graph">
+                <div className="boxG">
+                    <h1>Graph: </h1>
+                    <h6>Entered equation: {reqEquation}</h6>
+                    <br />
+                    <img className="graph" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
+                </div>
             </div>
-          </div>
+                )}
+        </div>
     ):(<>
     <h1 className="waiting-text">Waiting for Api response</h1>
     <div className="loader"></div>

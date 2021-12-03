@@ -36,7 +36,11 @@ const Solve = (props) => {
     
     const visEq=()=>{
         navigate('/vis',{state:location.state});
-      }
+    }
+
+    const refreshPage = ()=>{
+        window.location.reload();
+    }
   
     const [solution, setSolution] = useState();
     const [waiting, setWaiting] = useState(0);
@@ -50,19 +54,16 @@ const Solve = (props) => {
 
     return (
         (waiting)?(
-        <div className="solution home">
+        <div>
             {console.log(solution)}
+            {(typeof(solution)=="undefined")?(refreshPage()):(
+            <div className="solution home">
             <div className="box">
                 <h1>Solution: </h1>
                 <h6>Entered equation: {reqEquation}</h6>
                 <br />
                 {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
                 <h6>Answer : </h6>
-                {/* {arr.push(solution.data.queryresult.pods[4].subpods)}
-                {console.log(arr)}
-                {arr.map(sol => (
-                    <p>{sol.img.alt}</p>
-                ))} */}
                 <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p>
                 <div onClick={()=>{visEq()}}>
                 <input
@@ -73,11 +74,19 @@ const Solve = (props) => {
                 </div>
             </div>
         </div>
+            )}
+        </div>
     ):(<>
         <h1 className="waiting-text">Waiting for Api response</h1>
         <div className="loader"></div>
         </>)
     )
 }
+
+                /*{ {arr.push(solution.data.queryresult.pods[4].subpods)}
+                {console.log(arr)}
+                {arr.map(sol => (
+                    <p>{sol.img.alt}</p>
+                ))} }*/
 
 export default Solve
