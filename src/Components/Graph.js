@@ -55,7 +55,7 @@ const Solve = (props) => {
                     <h1>Graph: </h1>
                     <h6>Entered equation: {reqEquation}</h6>
                     <br />
-                    <img className="graph" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
+                    <img className="graph-img img-fluid" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
                 </div>
             </div>
                 )}

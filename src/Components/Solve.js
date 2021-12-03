@@ -58,22 +58,22 @@ const Solve = (props) => {
             {console.log(solution)}
             {(typeof(solution)=="undefined")?(refreshPage()):(
             <div className="solution home">
-            <div className="box">
-                <h1>Solution: </h1>
-                <h6>Entered equation: {reqEquation}</h6>
-                <br />
-                {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
-                <h6>Answer : </h6>
-                <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p>
-                <div onClick={()=>{visEq()}}>
-                <input
-                  type="button"
-                  className="btn btn-primary mt-4 ms-1"
-                  value="Visualize"
-                />
+                <div className="box">
+                    <h1>Solution: </h1>
+                    <h6>Entered equation: {reqEquation}</h6>
+                    <br />
+                    {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
+                    <h6>Answer : </h6>
+                    <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p>
+                    <div onClick={()=>{visEq()}}>
+                    <input
+                    type="button"
+                    className="btn btn-primary mt-4 ms-1"
+                    value="Visualize"
+                    />
+                    </div>
                 </div>
             </div>
-        </div>
             )}
         </div>
     ):(<>

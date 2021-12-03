@@ -66,7 +66,7 @@ const Scan = () => {
           )}
           {!isLoading && text && (
             <>
-              <h6 className="text-center">Please confirm the equation</h6>
+              <h6 className="text-center white_text">Please confirm the equation</h6>
               <textarea
                 className="form-control w-100 mt-5"
                 rows="5"
