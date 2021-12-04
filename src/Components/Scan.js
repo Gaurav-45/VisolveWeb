@@ -44,7 +44,7 @@ const Scan = () => {
               <progress className="form-control" value={progress} max="100">
                 {progress}%{' '}
               </progress>{' '}
-              <p className="text-center py-0 my-0">Converting:- {progress} %</p>
+              <p className="text-center py-0 my-0 white_text">Converting:- {progress} %</p>
             </>
           )}
           {!isLoading && !text && (

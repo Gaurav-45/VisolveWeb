@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react'
 import {useLocation} from 'react-router-dom'   
 import "../index.css" 
 import axios from 'axios'
-
+import { Link, useNavigate} from 'react-router-dom'
+import Error from './Error'
 
 const Solve = (props) => {
 
+    const navigate = useNavigate();
     const refreshPage = ()=>{
         window.location.reload();
     }
 
+    const handleClick=()=>{
+        navigate('/');
+    }
     const location = useLocation();
   
     var reqEquation=location.state.equation
@@ -51,12 +56,21 @@ const Solve = (props) => {
             <div>
             {(typeof(solution)=="undefined")?(refreshPage()):(
             <div className="graph">
-                <div className="boxG">
-                    <h1>Graph: </h1>
-                    <h6>Entered equation: {reqEquation}</h6>
-                    <br />
-                    <img className="graph-img img-fluid" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
-                </div>
+                {solution.data.queryresult.success==false?<Error/>:
+                    <div className="boxG">
+                        <h1>Graph: </h1>
+                        <h6>Entered equation: {reqEquation}</h6>
+                        <br />
+                        <img className="graph-img img-fluid" src={solution.data.queryresult.pods[1].subpods[0].img.src} />
+                        <div onClick={()=>{handleClick()}}>
+                            <input
+                            type="button"
+                            className="btn btn-primary"
+                            value="HOME"
+                            />
+                        </div>
+                    </div>
+                }
             </div>
                 )}
         </div>

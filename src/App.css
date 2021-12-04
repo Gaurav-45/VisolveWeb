@@ -43,6 +43,7 @@
 
 .graph-img{
     border: 1px solid grey;
+    margin-bottom: 30px;
 }
 
 /* .solution{
@@ -90,6 +91,10 @@
 
 .white_text{
     color: white;
+}
+
+.error{
+    padding-top: 18%;
 }
 
 @media only screen and (max-width: 600px) {

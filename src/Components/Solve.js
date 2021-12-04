@@ -4,6 +4,7 @@ import "../index.css"
 import axios from 'axios'
 import { Link, useNavigate} from 'react-router-dom'
 import Answer from './Answer'
+import Error from './Error'
 
 
 const Solve = (props) => {
@@ -14,7 +15,7 @@ const Solve = (props) => {
     var len=reqEquation.length
     var eq=""
     const arr= [];
-    let ans=[];
+    let ans="";
     
     console.log(reqEquation);
     console.log(len);
@@ -60,31 +61,34 @@ const Solve = (props) => {
             {console.log(solution)}
             {(typeof(solution)=="undefined")?(refreshPage()):(
             <div className="solution home">
-                {arr.push(solution.data.queryresult.pods[4].subpods)}
-                <div className="box">
-                    <h1>Solution: </h1>
-                    <h6>Entered equation: {reqEquation}</h6>
-                    <br />
-                    {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
-                    {console.log(arr)}
-                    <h6>Answer : </h6>
-                    {/* <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p> */}
-                    {arr.forEach(s=>{
-                        s.forEach(final=>{
-                            {console.log("printing this brooo"+final.img.alt)}
-                            {ans.push(final.img.alt + " ")}
-                        })
-                    })}
-                    {/* <Answer arr={arr}/> */}
-                    <p>{ans}</p>
-                    <div onClick={()=>{visEq()}}>
-                        <input
-                        type="button"
-                        className="btn btn-primary mt-4 ms-1"
-                        value="Visualize"
-                        />
-                    </div>
-                </div>
+                {console.log("Status"+solution.data.queryresult.success+typeof(solution.data.queryresult.success))}
+                {solution.data.queryresult.success==false?<Error/>:
+                    <div className="box">
+                        {arr.push(solution.data.queryresult.pods[4].subpods)}
+                        <h1>Solution: </h1>
+                        <h6>Entered equation: {reqEquation}</h6>
+                        <br />
+                        {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
+                        {console.log(arr)}
+                        <h6>Answer : </h6>
+                        {/* <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p> */}
+                        {arr.forEach(s=>{
+                            s.forEach(final=>{
+                                {/* {console.log("printing this brooo"+final.img.alt)} */}
+                                {/* {ans.push(final.plaintext + " ")} */}
+                                ans=ans+final.plaintext+"  "
+                            })
+                        })}
+                        {/* <Answer arr={arr}/> */}
+                        <p>{ans}</p>
+                        <div onClick={()=>{visEq()}}>
+                            <input
+                            type="button"
+                            className="btn btn-primary mt-4 ms-1"
+                            value="Visualize"
+                            />
+                        </div>
+                    </div>}
             </div>
             )}
         </div>
@@ -95,10 +99,5 @@ const Solve = (props) => {
     )
 }
 
-                /*{ {arr.push(solution.data.queryresult.pods[4].subpods)}
-                {console.log(arr)}
-                {arr.map(sol => (
-                    <p>{sol.img.alt}</p>
-                ))} }*/
 
 export default Solve
