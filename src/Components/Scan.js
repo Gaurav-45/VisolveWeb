@@ -51,6 +51,7 @@ const Scan = () => {
             <> 
               <input
                 type="file"
+                id="file"
                 onChange={(e) =>
                   setImage(URL.createObjectURL(e.target.files[0]))
                 }
@@ -58,6 +59,7 @@ const Scan = () => {
               />
               <input
                 type="button"
+                id="solve"
                 onClick={handleSubmit}
                 className="btn btn-primary mt-5"
                 value="Solve"

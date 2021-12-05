@@ -68,7 +68,7 @@ const Solve = (props) => {
                         <h1>Solution: </h1>
                         <h6>Entered equation: {reqEquation}</h6>
                         <br />
-                        {console.log(solution.data.queryresult.pods[4].subpods[0].img.alt)}
+                        {console.log(solution.data.queryresult.pods[solution.data.queryresult.pods.length-1].subpods[0].img.alt)}
                         {console.log(arr)}
                         <h6>Answer : </h6>
                         {/* <p>{solution.data.queryresult.pods[4].subpods[0].img.alt}</p> */}
