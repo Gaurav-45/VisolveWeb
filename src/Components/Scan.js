@@ -37,7 +37,11 @@ const Scan = () => {
       <div className="row h-100">
         <div className="col-md-5 mx-auto h-100 d-flex flex-column justify-content-center">
           {!isLoading && (
-            <h1 className="text-center py-3 mc-5 heading">Visolve</h1>
+            <div>
+              <h1 className="text-center py-3 mc-5 heading">Visolve</h1>
+              <p className="text-center tagline white_text ">A solution to all your problems</p>
+            </div>
+            
           )}
           {isLoading && (
             <>
