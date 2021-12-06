@@ -84,6 +84,7 @@ const Solve = (props) => {
                         <div onClick={()=>{visEq()}}>
                             <input
                             type="button"
+                            id="vis"
                             className="btn btn-primary mt-4 ms-1"
                             value="Visualize"
                             />

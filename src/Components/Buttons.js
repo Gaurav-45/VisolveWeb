@@ -16,7 +16,8 @@ const Buttons = (props) => {
         <div className="flex flex-row justify-end mx-auto">
                 {/* {console.log(props)} */}
                 <div onClick={()=>{solveEq()}}>
-                  <input 
+                  <input        
+                    id="solve"
                     type="button"
                     className="btn btn-success mt-5 ms-3"
                     value="Solve"
@@ -25,6 +26,7 @@ const Buttons = (props) => {
                 
                 <div onClick={()=>{visEq()}}>
                 <input
+                  id="graph"
                   type="button"
                   className="btn btn-primary mt-4 ms-1"
                   value="Visualize"

@@ -65,6 +65,7 @@ const Solve = (props) => {
                         <div onClick={()=>{handleClick()}}>
                             <input
                             type="button"
+                            id="home"
                             className="btn btn-primary"
                             value="HOME"
                             />
