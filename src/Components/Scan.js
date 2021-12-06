@@ -38,7 +38,7 @@ const Scan = () => {
         <div className="col-md-5 mx-auto h-100 d-flex flex-column justify-content-center">
           {!isLoading && (
             <div>
-              <h1 className="text-center py-3 mc-5 heading">Visolve</h1>
+              <h1 className="text-center mc-5 heading">Visolve</h1>
               <p className="text-center tagline white_text ">A solution to all your problems</p>
             </div>
             
@@ -72,7 +72,7 @@ const Scan = () => {
           )}
           {!isLoading && text && (
             <>
-              <h6 className="text-center white_text">Please confirm the equation</h6>
+              <h6 className="text-center py-3 white_text">Please confirm the equation</h6>
               <textarea
                 className="form-control w-100 mt-5"
                 rows="5"
