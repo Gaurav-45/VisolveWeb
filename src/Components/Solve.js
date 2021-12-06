@@ -64,7 +64,7 @@ const Solve = (props) => {
                 {console.log("Status"+solution.data.queryresult.success+typeof(solution.data.queryresult.success))}
                 {solution.data.queryresult.success==false?<Error/>:
                     <div className="box">
-                        {arr.push(solution.data.queryresult.pods[4].subpods)}
+                        {arr.push(solution.data.queryresult.pods[solution.data.queryresult.pods.length-1].subpods)}
                         <h1>Solution: </h1>
                         <h6>Entered equation: {reqEquation}</h6>
                         <br />
